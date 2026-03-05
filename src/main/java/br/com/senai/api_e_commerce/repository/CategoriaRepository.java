@@ -1,5 +1,9 @@
 package br.com.senai.api_e_commerce.repository;
 
-public class CategoriaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.senai.api_e_commerce.entity.Categoria;
+
+public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
     
 }
