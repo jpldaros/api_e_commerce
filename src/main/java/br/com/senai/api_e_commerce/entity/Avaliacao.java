@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -26,8 +28,13 @@ public class Avaliacao {
     @Size(min = 3, max = 200, message = "Mínimo de 3 e máximo de 200 caracteres para um comentário.")
     private String comentario;
 
-    //fk_cliente int not null
-    //fk_produto int not null
+    @ManyToOne
+    @JoinColumn(name = "fk_cliente")
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_produto")
+    private Produto produto;
 
     public Long getId() {
         return id;
@@ -51,6 +58,22 @@ public class Avaliacao {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
 }

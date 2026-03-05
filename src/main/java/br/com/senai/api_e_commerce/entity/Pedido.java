@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -29,8 +31,13 @@ public class Pedido {
     @Size(min = 3, max = 20, message = "Mínimo de 3 e máximo de 20 caracteres para o status.")
     private String status;
 
-    //fk_cliente int not null
-    //fk_produto int not null
+    @ManyToOne
+    @JoinColumn(name = "fk_cliente")
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_produto")
+    private Produto produto;
 
     public Long getId() {
         return id;
@@ -62,6 +69,22 @@ public class Pedido {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
     
 }

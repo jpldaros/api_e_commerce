@@ -1,10 +1,13 @@
 package br.com.senai.api_e_commerce.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -28,6 +31,12 @@ public class Cliente {
     @Size(min = 1, max = 1000, message = "Mínimo de 1 e máximo de 100 caracteres para o endereço.")
     private String endereco;
 
+    @OneToMany(mappedBy = "cliente")
+    private List<Avaliacao> avaliacoes;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
+
     public Long getId() {
         return id;
     }
@@ -50,6 +59,22 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     public String getEndereco() {

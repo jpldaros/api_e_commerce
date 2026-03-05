@@ -1,9 +1,14 @@
 package br.com.senai.api_e_commerce.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -24,7 +29,15 @@ public class Produto {
     @Positive(message = "É necessário informar um preço positivo para o produto")
     private Double preco;
 
-    //fk_categoria int not full
+    @OneToMany(mappedBy = "produto")
+    private List<Avaliacao> avaliacoes;
+
+    @OneToMany(mappedBy = "produto")
+    private List<Pedido> pedidos;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_categoria")
+    private Categoria categoria;
 
     public Long getId() {
         return id;
@@ -48,6 +61,30 @@ public class Produto {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     
