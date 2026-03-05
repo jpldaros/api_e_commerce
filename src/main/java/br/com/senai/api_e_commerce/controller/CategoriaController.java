@@ -54,17 +54,17 @@ public class CategoriaController {
 
         repository.save(categoria);
 
-        return new Response(200, "Avaliação atualizada!");
+        return new Response(200, "Categoria atualizada!");
     }
 
     @DeleteMapping("/{id}")
     public Response deleteCategoria(@PathVariable Long id) {
         if (!repository.existsById(id)) {
-            return new Response(404, "Avaliação não encontrada.");
+            return new Response(404, "Categoria não encontrada.");
         }
 
         repository.deleteById(id);
 
-        return new Response(204, "Avaliação deletada.");
+        return new Response(204, "Categoria deletada.");
     }
 }

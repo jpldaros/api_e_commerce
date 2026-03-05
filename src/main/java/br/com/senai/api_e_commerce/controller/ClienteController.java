@@ -42,7 +42,7 @@ public class ClienteController {
         return repository.findAll();
     }
 
-     @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public Response atualizaCliente(@PathVariable Long id, @RequestBody Cliente entity) {
 
         if (!repository.existsById(id)) {
