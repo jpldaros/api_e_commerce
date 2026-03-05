@@ -31,4 +31,37 @@ public class Pedido {
 
     //fk_cliente int not null
     //fk_produto int not null
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getData_pedido() {
+        return data_pedido;
+    }
+
+    public void setData_pedido(LocalDateTime data_pedido) {
+        this.data_pedido = data_pedido;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
 }
