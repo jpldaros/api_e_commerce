@@ -2,6 +2,8 @@ package br.com.senai.api_e_commerce.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,9 +32,11 @@ public class Produto {
     private Double preco;
 
     @OneToMany(mappedBy = "produto")
+    @JsonIgnore
     private List<Avaliacao> avaliacoes;
 
     @OneToMany(mappedBy = "produto")
+    @JsonIgnore
     private List<Pedido> pedidos;
 
     @ManyToOne
