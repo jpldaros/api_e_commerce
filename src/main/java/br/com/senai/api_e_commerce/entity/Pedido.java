@@ -19,7 +19,7 @@ public class Pedido {
     private Long id;
     
     @NotNull(message = "É necessário informar uma data e um horário (AAAA-MM-DD HH:mm).")
-    private LocalDateTime data_pedido;
+    private LocalDateTime dataPedido;
 
     @NotNull(message = "É necessário informar uma quantidade.")
     @Positive(message = "É necessário informar uma quantidade positiva para o pedido.")
@@ -40,12 +40,12 @@ public class Pedido {
         this.id = id;
     }
 
-    public LocalDateTime getData_pedido() {
-        return data_pedido;
+    public LocalDateTime getDataPedido() {
+        return dataPedido;
     }
 
-    public void setData_pedido(LocalDateTime data_pedido) {
-        this.data_pedido = data_pedido;
+    public void setDataPedido(LocalDateTime datapedido) {
+        this.dataPedido = datapedido;
     }
 
     public Integer getQuantidade() {
