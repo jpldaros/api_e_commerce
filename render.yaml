@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: projeto-integrador
+    name: api_e_commerce
     env: docker
     plan: free
     autoDeploy: true
